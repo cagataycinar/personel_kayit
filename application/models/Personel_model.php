@@ -9,8 +9,9 @@ class Personel_model extends CI_Model{
 
     }
 
-    public function insert(){ //Eklleme işlemi için kullanılacak metot
-
+    public function insert($data){ //Eklleme işlemi için kullanılacak metot
+        $insert = $this->db->insert("personel", $data); // personel tablosuna data değişkenini ekler, işlem sonucu insert değişkenine aktarıldı ve döndürüldü
+        return $insert; // sonucu döndürür. insert değişkenine sounucu döndürdük
     }
 
     public function update(){// update işlemi için kullanılacak metot

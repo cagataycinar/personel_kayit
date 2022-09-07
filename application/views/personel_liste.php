@@ -7,9 +7,12 @@
 </head>
 <body>
 <!--?php print_r($list); // list değişkenini kontrol etmek için ekranı yazdırdık ?> -->
+<div class="container">
 <h3 class="text-center">Personel Listesi</h3>
 <hr>
-   <div class="container">
+<a href="<?php echo base_url("personel/insert_form");?>" class="btn btn-primary btn-sm">Yeni Ekle</a>
+<br><br>
+
        <table class="table table-striped table-bordered table-hover col-md-6">
            <thead>
            <th>#id</th>

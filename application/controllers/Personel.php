@@ -12,11 +12,29 @@ class Personel extends CI_Controller{  // Controller olabilmesi için calss olab
     }
 
     public function insert_form(){  // insert_form fonksiyonu olmalıdır
-        //$this->load->view("personel_insert");  // view dosyasını çağırmak için kullanılır
+       $this->load->view("personel_ekle"); //$this->load->view("personel_insert");  // view dosyasını çağırmak için kullanılır
     }
 
-    public function insert(){
+    public function insert()
+    {
 
+        $data = [
+            "personel_ad"   => $this->input->post("personel_ad"),  # formdan gelen personel_ad değişkenini personel_ad değişkenine atadık
+            "email"         => $this->input->post("email"),
+            "telefon"       => $this->input->post("telefon"),
+            "departman"     => $this->input->post("departman"),
+            "adres"         =>  $this->input->post("adres")
+        ];
+
+        $insert = $this->personel_model->insert($data);
+
+        if($insert){
+            echo "Kayıt Başarı İle gerçekleştirildi.. <a class='btn' href='".base_url()."'>Tıklayınnız</a>";
+        }
+        else
+        {
+            echo "Hata Kayıt Gerçekleştirilemedi <a class='btn' href='".base_url()."'>Tıklayınnız</a>";
+        }
     }
 
     public function update_form(){
