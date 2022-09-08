@@ -37,12 +37,33 @@ class Personel extends CI_Controller{  // Controller olabilmesi için calss olab
         }
     }
 
-    public function update_form(){
+    public function update_form($id){ // update_form fonksiyonu olmalıdır
+        $where = ["id" => $id]; // id değişkenini where değişkenine atadık
+        $personel = $this->personel_model->get($where); // modelden tek bir personel getirdik
+        $viewData["personel"] = $personel; // viewData değişkenine personel değişkenini atadık
 
+        $this->load->view("personel_duzenle", $viewData); // viewData değişkenini personel_duzenle sayfasına gönderdik
     }
 
-    public function update(){
+    public function update($id){
+        $where = ["id" => $id];
 
+        $data =array(
+            "personel_ad" => $this->input->post("personel_ad"), # formdan gelen personel_ad değişkenini personel_ad değişkenine atadık
+            "email" => $this->input->post("email"), # formdan gelen email değişkenini email değişkenine atadık
+            "telefon" => $this->input->post("telefon"), # formdan gelen telefon değişkenini telefon değişkenine atadık
+            "departman" => $this->input->post("departman"), # formdan gelen departman değişkenini
+            "adres" => $this->input->post("adres") # formdan gelen adres değişkenini adres değişkenine atadık
+        );
+
+        $update = $this->personel_model->update($where,$data); // modelden update fonksiyonunu çağırdık
+        if($update){
+            echo "Güncelleme Başarı İle gerçekleştirildi.. <a class='btn' href='".base_url()."'>Tıklayınnız</a>";
+        }
+        else
+        {
+            echo "Hata Güncelleme Gerçekleştirilemedi <a class='btn' href='".base_url()."'>Tıklayınnız</a>";
+        }
     }
 
     public function delete(){

@@ -33,7 +33,7 @@
                <td><?php echo $row->departman; ?></td>
                <td><?php echo $row->adres; ?></td>
                <td>
-                   <a class="btn-xs btn-warning" href="#">Düzenle</a>
+                   <a class="btn-xs btn-warning" href="<?php echo base_url("personel/update_form/$row->id")?>">Düzenle</a>
                    <a class="btn-xs btn-danger" href="#">Sil</a>
                </td>
            </tr>
