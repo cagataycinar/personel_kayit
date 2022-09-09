@@ -27,7 +27,9 @@ class Personel_model extends CI_Model{
         return $delete; // sonucu döndürür. delete değişkenine sounucu döndürdük
     }
 
-    public function order_by(){ // sıralama için kullanılacak metehot
+    public function order_by($field, $order){ // sıralama için kullanılacak metehot
 
+        $result = $this->db->order_by($field, $order)->get("personel")->result(); // personel tablosundaki kayıtları sıralar, işlem sonucu result değişkenine aktarıldı ve döndürüldü
+        return $result; // sonucu döndürür. result değişkenine sounucu döndürdük
     }
 }

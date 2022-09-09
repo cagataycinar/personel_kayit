@@ -16,11 +16,11 @@
        <table class="table table-striped table-bordered table-hover col-md-6">
            <thead>
            <th>#id</th>
-           <th>Personel Adı <a href="#">[A-z]</a> <a href="#">[Z-a]</a></th>
-           <th>E-mail <a href="#">[A-z]</a> <a href="#">[Z-a]</a></th>
-           <th>Telefon <a href="#">[0-9]</a> <a href="#">[9-0]</a></th>
-           <th>Departman <a href="#">[A-z]</a> <a href="#">[Z-a]</a></th>
-           <th>Adres <a href="#">[A-z]</a> <a href="#">[Z-a]</a></th>
+           <th>Personel Adı <a href="<?php echo base_url("personel/order/personel_ad/ASC");?>">[A-z]</a> <a href="<?php echo base_url("personel/order/personel_ad/DESC");?>">[Z-a]</a></th>
+           <th>E-mail <a href="<?php echo base_url("personel/order/email/ASC");?>">[A-z]</a> <a href="<?php echo base_url("personel/order/email/DESC");?>">[Z-a]</a></th>
+           <th>Telefon <a href="<?php echo base_url("personel/order/telefon/ASC");?>">[0-9]</a> <a href="<?php echo base_url("personel/order/telefon/DESC");?>">[9-0]</a></th>
+           <th>Departman <a href="<?php echo base_url("personel/order/departman/ASC");?>">[A-z]</a> <a href="<?php echo base_url("personel/order/departman/DESC");?>">[Z-a]</a></th>
+           <th>Adres <a href="<?php echo base_url("personel/order/adres/ASC");?>">[A-z]</a> <a href="<?php echo base_url("personel/order/adres/DESC");?>">[Z-a]</a></th>
            <th>İşlemler</th>
            </thead>
            <tbody>

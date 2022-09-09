@@ -73,7 +73,10 @@ class Personel extends CI_Controller{  // Controller olabilmesi için calss olab
 
     }
 
-    public function order(){
+    public function order($field = "id", $order = "ASC"){
 
+        $list = $this->personel_model->order_by($field, $order);
+        $viewData["list"] = $list; // viewData değişkenine list değişkenini atadık
+        $this->load->view("personel_liste", $viewData); // viewData değişkenini personel_liste sayfasına gönderdik
     }
 }
