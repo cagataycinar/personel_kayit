@@ -22,8 +22,9 @@ class Personel_model extends CI_Model{
         return $update; // sonucu döndürür. update değişkenine sounucu döndürdük
     }
 
-    public function delete(){ // silme işlemi için kullanılacak methot
-
+    public function delete($where){ // silme işlemi için kullanılacak methot
+        $delete = $this->db->where($where)->delete("personel"); // personel tablosundaki kaydı siler, işlem sonucu delete değişkenine aktarıldı ve döndürüldü
+        return $delete; // sonucu döndürür. delete değişkenine sounucu döndürdük
     }
 
     public function order_by(){ // sıralama için kullanılacak metehot

@@ -34,7 +34,7 @@
                <td><?php echo $row->adres; ?></td>
                <td>
                    <a class="btn-xs btn-warning" href="<?php echo base_url("personel/update_form/$row->id")?>">Düzenle</a>
-                   <a class="btn-xs btn-danger" href="#">Sil</a>
+                   <a class="btn-xs btn-danger" href="<?php echo base_url("personel/delete/$row->id")?>">Sil</a>
                </td>
            </tr>
            <?php } ?>

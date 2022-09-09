@@ -66,7 +66,10 @@ class Personel extends CI_Controller{  // Controller olabilmesi için calss olab
         }
     }
 
-    public function delete(){
+    public function delete($id){
+        $where = array("id" => $id);
+        $this->personel_model->delete($where);
+        redirect(base_url());
 
     }
 
