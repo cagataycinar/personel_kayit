@@ -37,6 +37,11 @@
                     <input type="text" class="form-control" name="adres" value="<?php echo $personel->adres; ?>">
                 </div>
 
+                <div class="form-group">
+                    <label for="">Personelin Resmi</label>
+                    <input type="file" name="img_id" id="">
+                </div>
+
                 <button type="submit" class="btn btn-success">Kaydet</button>
                 <a class="btn btn-danger" href="<?php echo base_url(); ?>">İptal</a>
 
