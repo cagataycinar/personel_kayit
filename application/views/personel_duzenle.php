@@ -11,7 +11,7 @@
     <hr>
     <div class="row">
         <div class="col-md-6">
-            <form action="<?php echo base_url("personel/update/$personel->id");?>" method="post"> <!--personel insert fonksiyonuna göndermek için form action kısmına yazdık-->
+            <form action="<?php echo base_url("personel/update/$personel->id");?>" method="post" enctype="multipart/form-data"> <!--personel insert fonksiyonuna göndermek için form action kısmına yazdık-->
                 <div class="formgroup">
                     <label for="">Personelin Adı</label>
                     <input type="text" class="form-control" name="personel_ad" value="<?php echo $personel->personel_ad; ?>"> <!-- name kısmına personel_ad yazdık -->

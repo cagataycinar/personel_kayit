@@ -14,7 +14,7 @@ class Personel extends CI_Controller{  // Controller olabilmesi için calss olab
     public function insert_form(){  // insert_form fonksiyonu olmalıdır
        $this->load->view("personel_ekle"); //$this->load->view("personel_insert");  // view dosyasını çağırmak için kullanılır
     }
-
+ 
     public function insert()
     {
 
@@ -74,15 +74,41 @@ class Personel extends CI_Controller{  // Controller olabilmesi için calss olab
     }
 
     public function update($id){
+
+        $img = $_FILES["img_id"] ["name"];
+        if ($img) {
+            $config["upload_path"] = "uploads/"; // yükleme yapılacak klasör
+            $config["allowed_types"] = "gif|png|jpg"; // yüklenecek dosya türleri
+
+            $this->load->library("upload",$config);
+
+            $upload = $this->upload->do_upload("img_id");
+            if ($upload){
+                $data =array(
+                    "personel_ad" => $this->input->post("personel_ad"), # formdan gelen personel_ad değişkenini personel_ad değişkenine atadık
+                    "email" => $this->input->post("email"), # formdan gelen email değişkenini email değişkenine atadık
+                    "telefon" => $this->input->post("telefon"), # formdan gelen telefon değişkenini telefon değişkenine atadık
+                    "departman" => $this->input->post("departman"), # formdan gelen departman değişkenini
+                    "adres" => $this->input->post("adres"), # formdan gelen adres değişkenini adres değişkenine atadık
+                    "img_id" => $this->upload->data("file_name") # formdan gelen img_id değişkenini img_id değişkenine atadık
+                );
+            }else{
+                echo "resim yüklenirken bir hata oluştu";
+            }
+
+        }else{
+            //resim yğüklenmemiş
+            $data =array(
+                "personel_ad" => $this->input->post("personel_ad"), # formdan gelen personel_ad değişkenini personel_ad değişkenine atadık
+                "email" => $this->input->post("email"), # formdan gelen email değişkenini email değişkenine atadık
+                "telefon" => $this->input->post("telefon"), # formdan gelen telefon değişkenini telefon değişkenine atadık
+                "departman" => $this->input->post("departman"), # formdan gelen departman değişkenini
+                "adres" => $this->input->post("adres") # formdan gelen adres değişkenini adres değişkenine atadık
+            );
+        }
+
         $where = ["id" => $id];
 
-        $data =array(
-            "personel_ad" => $this->input->post("personel_ad"), # formdan gelen personel_ad değişkenini personel_ad değişkenine atadık
-            "email" => $this->input->post("email"), # formdan gelen email değişkenini email değişkenine atadık
-            "telefon" => $this->input->post("telefon"), # formdan gelen telefon değişkenini telefon değişkenine atadık
-            "departman" => $this->input->post("departman"), # formdan gelen departman değişkenini
-            "adres" => $this->input->post("adres") # formdan gelen adres değişkenini adres değişkenine atadık
-        );
 
         $update = $this->personel_model->update($where,$data); // modelden update fonksiyonunu çağırdık
         if($update){
