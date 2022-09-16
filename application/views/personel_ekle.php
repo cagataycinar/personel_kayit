@@ -11,31 +11,35 @@
     <hr>
     <div class="row">
         <div class="col-md-6">
-            <form action="<?php echo base_url("personel/insert");?>" method="post"> <!--personel insert fonksiyonuna göndermek için form action kısmına yazdık-->
+            <form action="<?php echo base_url("personel/insert");?>" method="post" enctype="multipart/form-data"> <!--personel insert fonksiyonuna göndermek için form action kısmına yazdık-->
                 <div class="formgroup">
                     <label for="">Personelin Adı</label>
                     <input type="text" class="form-control" name="personel_ad"> <!-- name kısmına personel_ad yazdık -->
-                </div>
+                </div><br>
 
                 <div class="formgroup">
                     <label for="">E-Mail</label>
                     <input type="text" class="form-control" name="email">
-                </div>
+                </div><br>
 
                 <div class="formgroup">
                     <label for="">Telefon</label>
                     <input type="text" class="form-control" name="telefon">
-                </div>
+                </div><br>
 
                 <div class="formgroup">
                     <label for="">Departman</label>
                     <input type="text" class="form-control" name="departman">
-                </div>
+                </div><br>
 
                 <div class="formgroup">
                     <label for="">Adres</label>
                     <input type="text" class="form-control" name="adres">
-                </div>
+                </div><br>
+                <div class="formgroup">
+                    <label for="">Personelin Resmi</label>
+                    <input type="file" name="img_id">
+                </div><br>
 
                 <button type="submit" class="btn btn-success">Kaydet</button>
                 <a class="btn btn-danger" href="<?php echo base_url(); ?>">İptal</a>

@@ -16,6 +16,7 @@
        <table class="table table-striped table-bordered table-hover col-md-6">
            <thead>
            <th>#id</th>
+           <th>Resim</th>
            <th>Personel Adı <a href="<?php echo base_url("personel/order/personel_ad/ASC");?>">[A-z]</a> <a href="<?php echo base_url("personel/order/personel_ad/DESC");?>">[Z-a]</a></th>
            <th>E-mail <a href="<?php echo base_url("personel/order/email/ASC");?>">[A-z]</a> <a href="<?php echo base_url("personel/order/email/DESC");?>">[Z-a]</a></th>
            <th>Telefon <a href="<?php echo base_url("personel/order/telefon/ASC");?>">[0-9]</a> <a href="<?php echo base_url("personel/order/telefon/DESC");?>">[9-0]</a></th>
@@ -27,6 +28,13 @@
            <?php foreach ($list as $row) {  ?>
            <tr>
                <td><?php echo $row->id; ?></td>
+               <td>
+                   <?php if($row->img_id) { ?>
+                       <img style="width: 50px;" src="<?php echo base_url("uploads/$row->img_id"); ?>" alt="">
+                       <?php } else { ?>
+                       <img style="width: 50px;" src="<?php echo base_url("assets/img/default.png"); ?>" alt="">
+                       <?php } ?>
+               </td>
                <td><?php echo $row->personel_ad; ?></td>
                <td><?php echo $row->email; ?></td>
                <td><?php echo $row->telefon; ?></td>

@@ -23,18 +23,46 @@ class Personel extends CI_Controller{  // Controller olabilmesi için calss olab
             "email"         => $this->input->post("email"),
             "telefon"       => $this->input->post("telefon"),
             "departman"     => $this->input->post("departman"),
-            "adres"         =>  $this->input->post("adres")
+            "adres"         => $this->input->post("adres"),
+            "img_id"        => $_FILES["img_id"]["name"],
         ];
 
-        $insert = $this->personel_model->insert($data);
+//        "img_id"        =>  $this->input->post("img_id"),
 
-        if($insert){
-            echo "Kayıt Başarı İle gerçekleştirildi.. <a class='btn' href='".base_url()."'>Tıklayınnız</a>";
+
+        if($data["personel_ad"] && $data["email"] && $data["telefon"] && $data["departman"] && $data["adres"] && $data["img_id"]){
+
+            $config["upload_path"] = "uploads/"; // yükleme yapılacak klasör
+            $config["allowed_types"] = "jpg|png|jpg"; // yüklenecek dosya türleri
+
+            $this->load->library("upload",$config); // yükleme kütüphanesini yükledik (yükleme yapılabilmesi için gerekli olan kütüpane)
+
+            if ($this->upload->do_upload("img_id")){
+
+                $img_id = $this->upload->data("file_name"); // yükleme işlemi başarılı ise yüklenecek dosyanın adını img_id değişkenine atadık
+
+                $data["img_id"] = $img_id; //
+
+
+                $insert = $this->personel_model->insert($data); // modelden gelen insert fonksiyonuna data değişkenini gönderdik
+
+                if($insert){
+                    echo "Kayıt Başarı İle gerçekleştirildi.. <a class='btn' href='".base_url()."'>Tıklayınnız</a>";
+                }
+                else
+                {
+                    echo "Hata Kayıt Gerçekleştirilemedi <a class='btn' href='".base_url()."'>Tıklayınnız</a>";
+                }
+
+            }else{
+                echo "resim yüklenirken bir hata oluştu";
+            }
         }
-        else
-        {
-            echo "Hata Kayıt Gerçekleştirilemedi <a class='btn' href='".base_url()."'>Tıklayınnız</a>";
+        else{
+            echo "Lütfen Tüm Alanları Doldurunuz <a class='btn' href='".base_url()."'>Tıklayınnız</a>";
         }
+
+
     }
 
     public function update_form($id){ // update_form fonksiyonu olmalıdır
