@@ -171,8 +171,8 @@ class Personel extends CI_Controller
                 "type" => "danger"
             );
         }
-        $this->session->set_flashdata("alert", $alert);
-        redirect(base_url("personel"));
+        $this->session->set_flashdata("alert", $alert); // alert değişkenini sessiona atadık
+        redirect(base_url("personel")); // personel sayfasına yönlendirme işlemi
 
     }
 
